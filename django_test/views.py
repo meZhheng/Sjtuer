@@ -10,8 +10,7 @@ POST_FORM = '''
 
 
 def index_view(request):
-    html = '<h1>Test!</h1>'
-    return HttpResponse(html)
+    return HttpResponseRedirect('bookstore/all_book')
 
 
 def page_invalid_view(request, pg):
@@ -66,8 +65,8 @@ def test_getmethod(request):
 
 def test_html(request):
     dic = {
-        'username':'xiaoming',
-        'age':'18',
+        'username': 'xiaoming',
+        'age': '18',
     }
     return render(request, 'test_html.html', dic)
 

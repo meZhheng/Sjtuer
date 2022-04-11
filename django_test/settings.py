@@ -27,7 +27,7 @@ DEBUG = True
 # ture 为调试模式：检测代码修改并自动重启；返回报错页面
 # false 为上线模式
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 # 只接受特定ip头的请求
 
 

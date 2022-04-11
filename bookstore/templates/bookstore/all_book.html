@@ -13,18 +13,18 @@
             <th>info</th>
             <th>op</th>
         </tr>
+        {% for book in all_books %}
         <tr>
-            {% for book in all_books %}
-                <td>{{ book.id }}</td>
-                <td>{{ book.title }}</td>
-                <td>{{ book.price }}</td>
-                <td>{{ book.info }}</td>
-                <td>
-                    <a href="/bookstore/update_book/{{ book.id }}">更新</a>
-                    <a href="/bookstore/delete_book?book_id={{ book.id }}">删除</a>
-                </td>
-            {% endfor %}
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.info }}</td>
+            <td>
+                <a href="/bookstore/update_book/{{ book.id }}">更新</a>
+                <a href="/bookstore/delete_book?book_id={{ book.id }}">删除</a>
+            </td>
         </tr>
+        {% endfor %}
     </table>
 </body>
 </html>
