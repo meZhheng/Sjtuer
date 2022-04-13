@@ -4,8 +4,8 @@
 		<title>Demo</title>
 		<meta charset = "utf-8">
 		<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-		<link rel = "stylesheet" type  = "text/css" href = "{{ url_for('static', filename='Demo.css') }}">
-		<link rel = "icon" type = "image/x-icon" href = "static/资源/交大图标.png">
+		<link rel = "stylesheet" type  = "text/css" href = "/static/css/home.css">
+		<link rel = "icon" type = "image/x-icon" href = "/static/image/交大图标.png">
 	</head>
 	<body>
 		<header>
@@ -17,7 +17,7 @@
 		<nav class = "menu">
 			<div class = "row_container">
 				<div class = "logo">
-					<a href = "SJTUer_home.html"><img src = "static/资源/Demo样例.jpg"></a>
+					<a href = "SJTUer_home.html"><img src = "/static/image/Demo样例.jpg"></a>
 				</div>
 				<div class = "div_nav">
 					<ul class = "ul_nav">
@@ -36,20 +36,6 @@
 		<main>
 			<div class = "row">
 				<section class = "recommend">
-					<div class = "book_recommend">
-						<ul style = "text-align: center;">
-							{% for recommend in book_recommend %}
-							<li class = "li_recommend"><a class = "a_recommend" href = "{{ recommend[2] }}" target = "_blank">
-								<div>
-									<img style = "position: absolute; left: 0;" src = "static/资源/{{recommend[0]}}.jpg">
-								</div>
-								<div>
-									<p class = p_recommend>{{ recommend[1] }}</p>
-								</div>
-							</a></li>
-							{% endfor %}
-						</ul>
-					</div>
 				</section>
 			</div>
 			<div class = "row">

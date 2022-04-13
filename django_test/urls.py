@@ -33,7 +33,7 @@ urlpatterns = [
     # re_path(reg, view, name = xxx)
 
     path('admin/', admin.site.urls),
-    path('', views.index_view),
+    path('', views.login_view),
     re_path(r'^page/(?P<pg>\d{1,2})$', views.page_valid_view),
     path('page/<int:pg>/', views.page_invalid_view),
     re_path(r'^(?P<x>\d{1,2})/(?P<op>\w+)/(?P<y>\d{1,2})$', views.cal2_view),
@@ -42,5 +42,6 @@ urlpatterns = [
     path('test_get_post', views.test_getmethod),
     path('test_html', views.test_html),
 
-    path('bookstore/', include('bookstore.urls'))
+    path('bookstore/', include('bookstore.urls')),
+    path('index', views.index_view),
 ]

@@ -9,8 +9,12 @@ POST_FORM = '''
 '''
 
 
+def login_view(request):
+    return render(request, 'Sjtuer_login.html')
+
+
 def index_view(request):
-    return HttpResponseRedirect('bookstore/all_book')
+    return  render(request, 'SJTUer_home.html')
 
 
 def page_invalid_view(request, pg):
