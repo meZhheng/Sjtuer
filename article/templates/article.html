@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type  = "text/css" href = "/static/css/article.css">
+    <link rel = "icon" type = "image/x-icon" href = "/static/image/icon.png">
+    <title>article</title>
+</head>
+<body>
+    <div class = "article">
+        <div class = "article_container">
+            <nav>
+                <div class = "nav_container">
+                    <div class = "div_nav">
+                        <ul class = "ul_nav">
+                            <li class = "li_nav"><a class = "a_nav_logo" href = "/index"><img  height="50px" src = "/static/image/logo.png"></a></li>
+                            <li class = "li_nav"><a class = "a_nav" href = "/index" target = "_blank">首页</a></li>
+                            <li class = "li_nav"><a class = "a_nav" href = "/article" target = "_blank">博文</a></li>
+                            <li class = "li_nav"><a class = "a_nav" href = "https://www.bilibili.com" target = "_blank">日常</a></li>
+                            <li class = "li_nav"><a class = "a_nav" href = "https://www.bilibili.com" target = "_blank">资源</a></li>
+                            <li class = "li_nav"><a class = "a_nav" href = "https://www.bilibili.com" target = "_blank">论坛</a></li>
+                        </ul>
+                        <div class = "search">
+                            <div class = "search_bar">
+                                <form class = "search_form">
+                                    <div class = "search_content">
+                                        <input class = "search_input" value="搜索框">
+                                    </div>
+                                    <div class = "search_botton">
+                                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.3451 15.2003C16.6377 15.4915 16.4752 15.772 16.1934 16.0632C16.15 16.1279 16.0958 16.1818 16.0525 16.2249C15.7707 16.473 15.4456 16.624 15.1854 16.3652L11.6848 12.8815C10.4709 13.8198 8.97529 14.3267 7.44714 14.3267C3.62134 14.3267 0.5 11.2314 0.5 7.41337C0.5 3.60616 3.6105 0.5 7.44714 0.5C11.2729 0.5 14.3943 3.59538 14.3943 7.41337C14.3943 8.98802 13.8524 10.5087 12.8661 11.7383L16.3451 15.2003ZM2.13647 7.4026C2.13647 10.3146 4.52083 12.6766 7.43624 12.6766C10.3517 12.6766 12.736 10.3146 12.736 7.4026C12.736 4.49058 10.3517 2.1286 7.43624 2.1286C4.50999 2.1286 2.13647 4.50136 2.13647 7.4026Z" fill="currentColor"></path>
+                                        </svg>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        {% if request.user.id %}
+                        <ul class = "ul_nav_2">
+                            <li class = "li_nav"><a class = "a_nav_logo"><img class = "avatar" src="/static/image/avator/{{ user.avatar }}"></a></li>
+                            <li class = "li_nav"><a class = "a_nav_logo">{{ user.username }}</a></li>
+                            <li class = "li_nav"><a class = "a_nav_logo" href = '/logout'>退出登录</a></li>
+                        </ul>
+                        {% else %}
+                        <ul class = "ul_nav_2">
+                            <li class = "li_nav"><a class = "a_nav_logo" href = "/login"><img class = "avatar" src="/static/image/avator/default.jpeg"></a></li>
+                            <li class = "li_nav"><a class = "a_nav_logo" href = "/login">未登录</a></li>
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class = nav_bg>
+                        <img alt = "" loading="eager" src = "/static/image/top_bg.jpeg">
+                    </div>
+                </div>
+            </nav>
+            <div class = "part">
+                <div>
+                    <div class = "article_nav">
+                        <div class = "article_name">博文</div>
+                        <div class = "article_sub">
+                            <button class = "article_sub_item">首页</button>
+                            <button class = "article_sub_item">美食</button>
+                            <button class = "article_sub_item">交通</button>
+                            <button class = "article_sub_item">知识</button>
+                            <button class = "article_sub_item">校园</button>
+                        </div>
+                        <div class = "operation_article_add">
+                            <a class = "a_article_add" href = "add"><img class = "article_add " src = "/static/image/add.jpeg"><p>发表文章</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <main class = "article_layout">
+                <div>
+                    <div class = "content_grid">
+                        <div class = "content_list">
+                            <div class = "content_header">
+                                <div class = "left">
+                                    <span class = ”title“>美食·推荐</span>
+                                </div>
+                            </div>
+                            <div class = "content_holder">
+                                {% for delicacy in delicacy_list %}
+                                <div class = "content_card">
+                                    <div class = "content_card_wrap">
+                                        <a class = "a_title" target="_blank">
+                                            <span class = "content_title">{{ delicacy.title }}</span>
+                                        </a>
+                                        <div class = "content_info">
+                                            <div class = "content_body">
+                                                <a class = "content_body_title" target="_blank"><p class = "desc">{{ delicacy.content }}</p></a>
+                                                <div class = "operation">
+                                                    <div></div>
+                                                    <div class = "operation_user">
+                                                        <a target="_blank">
+                                                            <span class = "content_user">by @{{ delicacy.user.username }}</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "content_grid">
+                        <div class = "content_list">
+                            <div class = "content_header">
+                                <div class = "left">
+                                    <span class = ”title“>美食·推荐</span>
+                                </div>
+                            </div>
+                            <div class = "content_holder">
+                                {% for delicacy in delicacy_list %}
+                                <div class = "content_card">
+                                    <div class = "content_card_wrap">
+                                        <a class = "a_title" target="_blank">
+                                            <span class = "content_title">{{ delicacy.title }}</span>
+                                        </a>
+                                        <div class = "content_info">
+                                            <div class = "content_body">
+                                                <a class = "content_body_title" target="_blank"><p class = "desc">{{ delicacy.content }}</p></a>
+                                                <div class = "operation">
+                                                    <div></div>
+                                                    <div class = "operation_user">
+                                                        <a target="_blank">
+                                                            <span class = "content_user">by @{{ delicacy.user.username }}</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "content_grid">
+                        <div class = "content_list">
+                            <div class = "content_header">
+                                <div class = "left">
+                                    <span class = ”title“>美食·推荐</span>
+                                </div>
+                            </div>
+                            <div class = "content_holder">
+                                {% for delicacy in delicacy_list %}
+                                <div class = "content_card">
+                                    <div class = "content_card_wrap">
+                                        <a class = "a_title" target="_blank">
+                                            <span class = "content_title">{{ delicacy.title }}</span>
+                                        </a>
+                                        <div class = "content_info">
+                                            <div class = "content_body">
+                                                <a class = "content_body_title" target="_blank"><p class = "desc">{{ delicacy.content }}</p></a>
+                                                <div class = "operation">
+                                                    <div></div>
+                                                    <div class = "operation_user">
+                                                        <a target="_blank">
+                                                            <span class = "content_user">by @{{ delicacy.user.username }}</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

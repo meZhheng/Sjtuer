@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Demo</title>
+		<meta charset = "utf-8">
+		<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+		<link rel = "stylesheet" type  = "text/css" href = "/static/css/home.css">
+		<link rel = "icon" type = "image/x-icon" href = "/static/image/icon.png">
+	</head>
+	<body>
+		<header>
+			<div class = "div_header">
+				<div class = "pheader">SJTUers 轻 首 页</div>
+			</div>
+		</header>
+		<div class = "holder"></div>
+		<nav class = "menu">
+            <div class = "div_nav">
+                <ul class = "ul_nav">
+                    <li class = "li_nav"><a class = "a_nav_logo" href = "/index"><img  height="50px" src = "/static/image/logo.png"></a></li>
+                    <li class = "li_nav"><a class = "a_nav" href = "/article" target = "_blank">博文</a></li>
+                    <li class = "li_nav"><a class = "a_nav" href = "https://www.bilibili.com" target = "_blank">日常</a></li>
+                    <li class = "li_nav"><a class = "a_nav" href = "https://www.bilibili.com" target = "_blank">资源</a></li>
+                    <li class = "li_nav"><a class = "a_nav" href = "https://www.bilibili.com" target = "_blank">论坛</a></li>
+                </ul>
+                <div class = "search">
+                    <div class = "search_bar">
+                        <form class = "search_form">
+                            <div class = "search_content">
+                                <input class = "search_input" value="搜索框">
+                            </div>
+                            <div class = "search_botton">
+                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.3451 15.2003C16.6377 15.4915 16.4752 15.772 16.1934 16.0632C16.15 16.1279 16.0958 16.1818 16.0525 16.2249C15.7707 16.473 15.4456 16.624 15.1854 16.3652L11.6848 12.8815C10.4709 13.8198 8.97529 14.3267 7.44714 14.3267C3.62134 14.3267 0.5 11.2314 0.5 7.41337C0.5 3.60616 3.6105 0.5 7.44714 0.5C11.2729 0.5 14.3943 3.59538 14.3943 7.41337C14.3943 8.98802 13.8524 10.5087 12.8661 11.7383L16.3451 15.2003ZM2.13647 7.4026C2.13647 10.3146 4.52083 12.6766 7.43624 12.6766C10.3517 12.6766 12.736 10.3146 12.736 7.4026C12.736 4.49058 10.3517 2.1286 7.43624 2.1286C4.50999 2.1286 2.13647 4.50136 2.13647 7.4026Z" fill="currentColor"></path>
+                                </svg>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% if request.user.id %}
+                <ul class = "ul_nav_2">
+                    <li class = "li_nav"><a class = "a_nav_logo"><img class = "avatar" src="/static/image/avator/{{ user.avatar }}"></a></li>
+                    <li class = "li_nav"><a class = "a_nav_logo">{{ user.username }}</a></li>
+                    <li class = "li_nav"><a class = "a_nav_logo" href = '/logout'>退出登录</a></li>
+                </ul>
+                {% else %}
+                <ul class = "ul_nav_2">
+                    <li class = "li_nav"><a class = "a_nav_logo" href = "/login"><img class = "avatar" src="/static/image/avator/default.jpeg"></a></li>
+                    <li class = "li_nav"><a class = "a_nav_logo" href = "/login">未登录</a></li>
+                </ul>
+                {% endif %}
+            </div>
+		</nav>
+		<main>
+			<div class = "row">
+				<section class = "recommend">
+				</section>
+			</div>
+			<div class = "row">
+				<section class = "news">
+					<h1>交大要闻</h1>
+					<ul class = "ul_news">
+						{% for news in news_list %}
+						<li class = "li_news"><a class = "a_news" href = "{{ news.href }}" target = "_blank"><p class = p_news>{{ news.info }}</p></a></li>
+						{% endfor %}
+					</ul>
+				</section>
+				<section class = "news">
+					<h1>通知通告</h1>
+					<ul class = "ul_news">
+						{% for news in notice_list %}
+						<li class = "li_news"><a class = "a_news" href = "{{ news.href }}" target = "_blank"><p class = p_news>{{ news.info }}</p></a></li>
+						{% endfor %}
+					</ul>
+				</section>
+				<section class = "news">
+					<h1>媒体聚焦</h1>
+					<ul class = "ul_news">
+						{% for news in focus_list %}
+						<li class = "li_news"><a class = "a_news" href = "{{ news.href }}" target = "_blank"><p class = p_news>{{ news.info }}</p></a></li>
+						{% endfor %}
+					</ul>
+				</section>
+			</div>
+		</main>
+		<footer>
+			<nav class = "website">
+				<div class = "div_website">
+					<h5>常用网站</h5>
+					<ul class = "ul_website">
+						<li><a class = "a_website" href = "https://oc.sjtu.edu.cn/" target = "_blank">canvas</a></li>
+						<li><a class = "a_website" href = "https://i.sjtu.edu.cn/" target = "_blank">教务处</a></li>
+						<li><a class = "a_website" href = "https://mail.sjtu.edu.cn/" target = "_blank">交大邮箱</a></li>
+						<li><a class = "a_website" href = "https://oc.sjtu.edu.cn/" target = "_blank">canvas</a></li>
+					</ul>
+				</div>
+				<div class = "word">
+					<p>饮水思源，爱国荣校。</p>   
+				</div>
+			</nav>
+		</footer>
+		<div class = "return_top">
+			<div class = "return_top_icon">
+				<a href = "#top"><img src = "static/image/返回顶部.png/" class = "img_return_top"></a>
+			</div>
+		</div>
+	</body>
+</html>

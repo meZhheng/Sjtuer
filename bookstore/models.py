@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # python manage.py makemigrations
 # python manage.py migrate
 
@@ -48,25 +47,32 @@ from django.db import models
         2.objects.delete()
 '''
 
+'''
+    聚合查询
+        1.要先引入函数 sum avg count max min
+'''
+
 
 class Book(models.Model):
-
-    title = models.CharField('title', max_length=50, default='')
-    price = models.DecimalField('price', max_digits=7, decimal_places=2, default=0.0)
+    title = models.CharField('书名', max_length=50, default='')
+    price = models.DecimalField('价格', max_digits=7, decimal_places=2, default=0.0)
     info = models.CharField('描述', max_length=100, default='')
     is_active = models.BooleanField('是否活跃', default=True)
 
     class Meta:
         # Meta类用于修改模型类（表）本身的属性
         db_table = 'book'
+        # 修改表名
+        verbose_name = '图书'
+        # 修改admin后台表名
+        verbose_name_plural = '图书'
+        # 修改admin后台表名的复数形式
 
-    def _str_(self):
-
-        return '%s_%s_%s' % (self.title, self.price, self.info)
+    def __str__(self):
+        return '%s|%s|%s' % (self.title, self.price, self.info)
 
 
 class Author(models.Model):
-
     name = models.CharField('姓名', max_length=11)
     age = models.IntegerField('年龄')
     email = models.EmailField('邮箱')

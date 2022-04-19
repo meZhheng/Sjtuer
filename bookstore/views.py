@@ -5,6 +5,7 @@ from .models import Book
 
 def all_book(request):
     all_books = Book.objects.filter(is_active=True)
+    print(locals())
     return render(request, 'bookstore/all_book.html', locals())
 
 

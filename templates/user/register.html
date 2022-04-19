@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type  = "text/css" href = "/static/css/home.css">
+    <link rel = "stylesheet" type  = "text/css" href = "/static/css/register.css">
+    <title>register</title>
+    <style>
+        table,td{
+            border:1px solid black;
+        }
+        table{
+            height: 200%;
+        }
+    </style>
+    <script>
+        function registered(){
+            let account=document.forms["M_form"]["account"].value;
+            let password_1=document.forms["M_form"]["password_1"].value;
+            let password_2=document.forms["M_form"]["password_2"].value;
+            let email=document.forms["M_form"]["email"].value;
+            let first_name=document.forms["M_form"]["first_name"].value;
+            let last_name=document.forms["M_form"]["last_name"].value;
+            let phone=document.forms["M_form"]["phone"].value;
+
+            if(account==null||account==""||password_1==null||password_1==""||password_2==null||password_2==""){
+                alert("账号密码不能为空")
+            }
+        }
+    </script>
+</head>
+<body background="/static/image/bg.webp">
+<header>
+        <div class = div_header>
+            <div class = "pheader">SJTUers 轻 首 页</div>
+        </div>
+</header>
+<div class="register-container" style="display:block;">
+        <div class="register-content">
+            <div class="title">
+                <br><br><br>
+                <h2>欢迎来到SJTUer注册</h2>
+            </div>
+            <div class="m_body">
+                <form name="M_form" method="post" action="register" onsubmit="registered()">
+                    <br>
+                <table>
+                    <tr>
+                        <td><label class="U_account1"></label>*Account:</td>
+                        <td><input data-placeholder="创建您的账户" class="U_account2" name="account"  type="text" style="width:200px" placeholder="创建您的账户"></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="U_account1" ></label>*Password:</td>
+                        <td><input data-placeholder="创建您的密码" class="U_account2" name="password_1"  type="text" style="width:200px" placeholder="创建您的密码"></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="U_account1" ></label>*Password_confirm:</td>
+                        <td><input data-placeholder="确认您的密码" class="U_account2" name="password_2"  type="text" style="width:200px" placeholder="确认您的密码"></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="U_account1" ></label>Email:</td>
+                        <td><input data-placeholder="选填您的邮箱" class="U_account2" name="email"  type="text" style="width:200px" placeholder="选填您的邮箱"></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="U_account1" ></label>First_Name:</td>
+                        <td><input data-placeholder="您的姓" class="U_account2" name="first_name"  type="text" style="width:200px" placeholder="您的姓"></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="U_account1" ></label>Last_Name:</td>
+                        <td><input data-placeholder="您的名" class="U_account2" name="last_name"  type="text" style="width:200px" placeholder="您的名"></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="U_account1" ></label>Phone:</td>
+                        <td><input data-placeholder="选填您的邮箱" class="U_account2" name="phone"  type="text" style="width:200px" placeholder="选填您的邮箱"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="创建">&ensp;&ensp;&ensp;&ensp;<a>*是必填项</a>  &ensp;&ensp;&ensp;<a href="Sjtuer_login.html">点我回到登录界面</a></td>
+                    </tr>
+                </table>
+                </form>
+            </div>
+            <div class="img">
+                <img src="/static/image/xiaomai.webp">
+                <img src="/static/image/xiao1.webp">
+                <img src="/static/image/xiao3.webp">
+            </div>
+        </div>
+</div>
+</body>
+</html>
