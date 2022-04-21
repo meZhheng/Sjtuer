@@ -30,8 +30,8 @@ def register_view(request):
         if old_user:
             return HttpResponse('---用户名已被占用---')
         try:
-            user = UserInfo.objects.create(username=account, password=password1, email=email,
-                                           first_name=first_name, last_name=last_name, phone=phone)
+            user = UserInfo.objects.create_user(username=account, password=password1, email=email,
+                                                first_name=first_name, last_name=last_name, phone=phone)
         except Exception as err:
             print('--create user error %s' % err)
             return HttpResponse('--用户名已被占用---')

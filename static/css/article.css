@@ -453,3 +453,12 @@ img{
 	border-radius: 40px;
 }
 
+.search_button_style{
+	margin: 0;
+	padding: 0;
+	width: 32px;
+	height: 32px;
+	border: none;
+	border-radius: 6px;
+	background-color: inherit;
+}
