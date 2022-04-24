@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="标题">
+    <textarea name="text" cols="30" rows="20" placeholder="内容"></textarea>
+    <input type="submit" value="提交">
+</form>
+
+<!--上传图片模块-->
+<!--创建表单-->
+<form method ="post" enctype="multipart/form-data" id="image_upload">
+    <img id="image_display">
+    <p>
+        <input type="file" id="file" name="upload_image" accept="image/jpg,image/jpeg,image/gif"> <!--这里可以规定上传文件的格式-->
+    </p>
+    <p id="info"></p> <!--这里用于显示上传结果，但还没写，因为没规定图片大小什么的，所以还没打算添加-->
+</form>
+
+<script type="text/javascript">
+    let fileInput=document.getElementById('file');
+    let info=document.getElementById('info');
+    let preview=document.getElementById('image_display');
+
+    fileInput.addEventListener('change',function(){
+      preview.style.backgroundImage=''; <!--清空上一张图片-->
+
+      let file= fileInput.files[0];
+      let reader=new FileReader();
+      reader.onload=function(e){
+          let data=e.target.result;
+          console.log(preview)
+          preview.src=data
+      };
+      reader.readAsDataURL(file);
+    }) <!--读取文件并且显示-->
+</script>
+
+</body>
+</html>
