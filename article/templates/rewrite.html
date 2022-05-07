@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<form action="/article/rewriteset/{{ note.title}}/" method="post">
+        <p>
+            标题 <input type="text" name="title" value="{{ note.title }}" >
+        </p>
+        <P>
+
+             内容<textarea name="content" cols="30" rows="20"  >{{ note.content}}</textarea>
+        </P>
+        <p>
+            <input type="submit" value="更新">
+        </p>
+</form>
+</body>
+</html>

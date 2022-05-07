@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel = "icon" type = "image/x-icon" href = "/static/image/icon.png">
+    <link rel = "stylesheet" type  = "text/css" href = "/static/css/space.css">
+    <link rel = "stylesheet" type  = "text/css" href = "/static/css/home.css">
+    <title>space</title>
+</head>
+<body>
+    <nav class = "menu">
+            <div class = "div_nav">
+                <ul class = "ul_nav">
+                    <li class = "li_nav"><a class = "a_nav_logo" href = "/index"><img  height="50px" src = "/static/image/logo.png"></a></li>
+                    <li class = "li_nav"><a class = "a_nav" href = "/article" target = "_blank">博文</a></li>
+                    <li class = "li_nav"><a class = "a_nav" href = "https://www.bilibili.com" target = "_blank">日常</a></li>
+                    <li class = "li_nav"><a class = "a_nav" href = "https://www.bilibili.com" target = "_blank">资源</a></li>
+                    <li class = "li_nav"><a class = "a_nav" href = "https://www.bilibili.com" target = "_blank">论坛</a></li>
+                </ul>
+                <div class = "search">
+                    <div class = "search_bar">
+                        <form class = "search_form">
+                            <div class = "search_content">
+                                <input class = "search_input" value="搜索框">
+                            </div>
+                            <div class = "search_botton">
+                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.3451 15.2003C16.6377 15.4915 16.4752 15.772 16.1934 16.0632C16.15 16.1279 16.0958 16.1818 16.0525 16.2249C15.7707 16.473 15.4456 16.624 15.1854 16.3652L11.6848 12.8815C10.4709 13.8198 8.97529 14.3267 7.44714 14.3267C3.62134 14.3267 0.5 11.2314 0.5 7.41337C0.5 3.60616 3.6105 0.5 7.44714 0.5C11.2729 0.5 14.3943 3.59538 14.3943 7.41337C14.3943 8.98802 13.8524 10.5087 12.8661 11.7383L16.3451 15.2003ZM2.13647 7.4026C2.13647 10.3146 4.52083 12.6766 7.43624 12.6766C10.3517 12.6766 12.736 10.3146 12.736 7.4026C12.736 4.49058 10.3517 2.1286 7.43624 2.1286C4.50999 2.1286 2.13647 4.50136 2.13647 7.4026Z" fill="currentColor"></path>
+                                </svg>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% if request.user.id %}
+                <ul class = "ul_nav_2">
+                    <li class = "li_nav"><a class = "a_nav_logo"><img class = "avatar" src="/static/image/avator/{{ user.avatar }}"></a></li>
+                    <li class = "li_nav"><a class = "a_nav_logo">{{ user.username }}</a></li>
+                    <li class = "li_nav"><a class = "a_nav_logo" href = '/logout'>退出登录</a></li>
+                </ul>
+                {% else %}
+                <ul class = "ul_nav_2">
+                    <li class = "li_nav"><a class = "a_nav_logo" href = "/login"><img class = "avatar" src="/static/image/avator/default.jpeg"></a></li>
+                    <li class = "li_nav"><a class = "a_nav_logo" href = "/login">未登录</a></li>
+                </ul>
+                {% endif %}
+            </div>
+		</nav>
+    <main class = "space_main">
+        <div class = "header">
+            <div class = "wrapper">
+                <div class = "user_info">
+                    <div class = "gradient"></div>
+                    <div class = "user">
+                        <div class = "user_detail">
+                            <div class = "user_avatar" style = "width: 60px; height: 60px;">
+                                <img class = "user_avatar_img" src = "/static/image/avator/{{ user.avatar }}">
+                            </div>
+                            <div class = "user_basic"><span class = "user_name">{{ user.username }}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "work">
+            <div>
+                <div class = "work_index">
+                    <div class = "index_content">
+                        <ul class = work_list>
+                        {% for work in work_list %}
+                            <li class = "awork">
+                                <div class = "info">
+                                    <div class = "title">
+                                        <h3 class = "title_h3"><a class = "work_a" href = "">{{ work.title }}</a></h3>
+                                    </div>
+                                    <div>
+                                        <p class = "brief">{{ work.content }}</p>
+                                    </div>
+                                    <div class = "label">
+                                        <span class = "part">#{{ work.module }}</span>
+                                    </div>
+                                </div>
+                                <div class = "operation">
+                                    <div>
+                                        <form method="post" class = "operation_wrap">
+                                            <button type = "submit" formaction = "/article/wartch/{{ work.title }}/" class = "btn_l">查看</button>
+                                            <button type = "submit" formaction = "/article/rewrite/{{ work.title }}/" class = "btn_l">修改</button>
+                                            <button type = "submit" formaction = "/article/delete?id={{ work.id }}" class = "btn_r">删除</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

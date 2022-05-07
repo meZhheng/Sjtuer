@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .contenter{
+             width: 80%;
+             display: grid;
+             grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+             grid-template-rows: repeat(16,300px);
+             gap: 10px;
+             justify-content: stretch;
+             align-items: stretch;
+        }
+        .contenter div{
+            background-color: rgb(173, 225, 241);
+        }
+    </style>
+</head>
+<body>
+    <div class="contenter">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+<script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+<script>
+    let contenter = document.getElementsByClassName("contenter")[0];
+    let distance=0;
+    window.onscroll=function(){
+        distance = document.documentElement.scrollTop;
+        // console.log(distance);
+        let idex=0;
+        if(distance>=600 && distance<=2000){
+            if((distance-600)%4===0){
+                idex++;
+                if(idex<180){
+           let new_div = document.createElement('div');
+           contenter.appendChild(new_div);
+           new_div.className="item";
+             }
+           }
+        }
+    }
+    ScrollReveal().reveal('.item', {
+            reset: true, // 滚动鼠标时，动画开关
+            origin: 'right', // 动画开始的方向
+            duration: 1000, // 动画持续时间
+            delay: 0, // 延迟
+            rotate: {x:0, y:0, z:0}, // 过度到0的初始角度
+            opacity: 0.3, // 初始透明度
+            scale: 0.4, //缩放
+            easing: 'ease', // 缓动'ease', 'ease-in-out'，'linear'...
+        });
+</script>
+</html>

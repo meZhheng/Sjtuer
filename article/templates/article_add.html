@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="标题">
+    <select name="module">
+        <option value="美食">美食</option>
+        <option value="交通">交通</option>
+        <option value="知识">知识</option>
+        <option value="校园">校园</option>
+    </select>
+    <textarea name="text" cols="30" rows="20" placeholder="内容"></textarea>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>
