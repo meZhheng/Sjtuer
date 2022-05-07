@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type  = "text/css" href = "/static/css/login.css">
+    <link rel = "stylesheet" type  = "text/css" href = "/static/css/home.css">
+    <link rel = "icon" type = "image/x-icon" href = "/static/image/交大图标.png">
+    <title>login</title>
+    <style>
+        .u_account1{
+            text-transform:uppercase;
+        }
+    </style>
+</head>
+<head>
+    <script>
+        function on_submit() {
+            let x = document.forms["MyForm"]["account"].value;
+            let y = document.forms["MyForm"]["password"].value;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class = div_header>
+            <div class = "pheader">SJTUers 轻 首 页</div>
+        </div>
+    </header>
+    <div class = "holder"></div>
+    <div class = bg style="background-image: url(/static/image/login_bg.jpeg);">
+        <div class = notice>
+            <h1 style = "text-indent: 34px;">声明</h1>
+            <p style = "text-indent: 34px;">此网站仅用于课程小组学习！</p>
+        </div>
+        <div class = login>
+            <h1 style = "text-indent: 34px;">登录 Login</h1>
+            <div class = website_login>
+                <h2 style = "text-align: center">本站账号登录</h2>
+                <center>
+                    <form name="MyForm" method="post" action="login" onsubmit="on_submit()">
+                           <br>
+                          <table>
+                              <tr>
+                                  <td> <label class="u_account1" ></label>account:</td>
+                                  <td><input data-placeholder="您的账户" class="u_account2" name="account"  type="text" style="width:200px" placeholder="您的账户"></td>
+                              </tr>
+                              <tr>
+                                  <td> <label class="u_account1" ></label>password:</td>
+                                  <td><input data-placeholder="您的密码" class="u_account2" name="password"  type="text" style="width:200px" placeholder="您的密码"></td>
+                              </tr>
+                              <tr>
+                                  <td COLSPAN="2"><input type="submit" value="登录"></td>
+                              </tr>
+                          </table>
+                </form>
+                    <table>
+                        <tr>
+                                  <td href="SJTUer_registered.html" COLSPAN="2"><input type="submit" value="注册"></td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+            <div class="divider">
+            <div class="divider-text">使用javcount账号登录</div>
+            </div>
+            <div class = javcount_login>
+                <a href=""><img src="/static/image/javcount.png" style="width: 100%; height: 60px;"></a>
+            </div>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+</body>
+</html>

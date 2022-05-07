@@ -1,0 +1,54 @@
+.notice{
+    float: left;
+    background: bisque;
+    margin: 100px 5px 100px 25%;
+    width: 480px;
+    height: 515px;
+    opacity: 1;
+}
+
+.login{
+    position: relative;
+    float: right;
+    background: azure;
+    margin: 100px 10% 100px 5px;
+    width: 480px;
+    height: 515px;
+    opacity: 1;
+}
+
+.website_login{
+    width: 100%;
+    height: 360px;
+}
+
+.javcount_login{
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    position: relative;
+    background-color: coral;
+}
+
+.divider-text{
+    position: absolute;
+    left: 160px;
+    color: #303133;
+    background: azure;
+    transform: translateY(-50%);
+}
+
+.bg{
+    background-size: 100%;
+    opacity: 0.75;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    height: 800px;
+}

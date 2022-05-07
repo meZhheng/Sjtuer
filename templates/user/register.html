@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/register.css">
+    <link rel="stylesheet" type="text/css" href="/static/plugins/bootstrap-4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/plugins/bootstrap-4.4.1/js/bootstrap.min.js">
+    <title>register</title>
+    <style>
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: calc(1.5em + 0.75rem + 2px);
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+    </style>
+    <script>
+        function registered() {
+            let account = document.forms["M_form"]["account"].value;
+            let password_1 = document.forms["M_form"]["password_1"].value;
+            let password_2 = document.forms["M_form"]["password_2"].value;
+            let email = document.forms["M_form"]["email"].value;
+            let first_name = document.forms["M_form"]["first_name"].value;
+            let last_name = document.forms["M_form"]["last_name"].value;
+            let phone = document.forms["M_form"]["phone"].value;
+
+            if (account == null || account == "" || password_1 == null || password_1 == "" || password_2 == null || password_2 == "") {
+                alert("账号密码不能为空")
+            }
+        }
+    </script>
+</head>
+<body class="text-center">
+<header>
+    <div class=div_header>
+        <div class="pheader">SJTUers 注册</div>
+    </div>
+</header>
+
+<form name="M_form" method="post" action="register" onsubmit="registered()" class="form-signin">
+    <br><br><br><br><br><br><br><br><br>
+    <h1 class="h3 mb-3 font-weight-normal">欢迎来到SJTUers注册</h1>
+    <label class="sr-only">jaccount</label>
+    <input  class="form-control" name="account" type="text" placeholder="创建您的账户(必填)" required
+           autofocus>
+    <label class="sr-only">password</label>
+    <input  class="form-control" name="password_1" type="text" placeholder="创建您的密码(必填)" required
+           autofocus>
+    <label class="sr-only">password_confirm</label>
+    <input class="form-control" name="password_2" type="text" placeholder="确认您的密码(必填)" required
+           autofocus>
+    <label class="sr-only">Email</label>
+    <input class="form-control" name="email" type="text" placeholder="选填您的邮箱(选填)">
+    <!--
+    <label class="sr-only">First_Name</label>
+    <input data-placeholder="您的姓" class="form-control" name="first_name" type="text" placeholder="您的姓" required autofocus>
+    <label class="sr-only">Last_Name</label>
+    <input data-placeholder="您的名" class="form-control" name="last_name" type="text" placeholder="您的名" required autofocus>
+    <label class="sr-only">Phone</label>
+    -->
+
+    <input  class="form-control" name="phone" type="text" placeholder="选填您的电话(选填)">
+    <input type="submit" value="创建" class="btn btn-lg btn-primary btn-block">
+    <a href="/login">点我回到登录界面</a>
+</form>
+</body>
+</html>
