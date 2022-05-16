@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/heml; charset=utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <title>注册、登录页面</title>
+    <link rel="stylesheet" href="/static/css/user.css">
+    <link rel="stylesheet" href="/static/css/rotation.css">
+    <script type="text/javascript" src="/static/js/alert.js"></script>
+</head>
+<body>
+    <div class = "container">
+        <div class = "form-box">
+            <div class = "register hidden">
+                <h1>注册</h1>
+                <form method="post" action="register" onsubmit="return register_submit()">
+                    <input id="account" name="account" onblur="register_blur()" type="text" placeholder="创建您的账户(必填)">
+                        <div class="input-row">
+                            <input id="password1" name="password" onblur="register_blur()" type="password" placeholder="创建您的密码(必填)">
+                            <img id="demo_img2" onclick="hideShowPsw2()" src="/static/image/visible.png" type="button">
+                         </div>
+                        <div class="input-row">
+                            <input id="password2" onblur="register_blur()" type="password" placeholder="确认您的密码(必填)">
+                            <img id="demo_img2" onclick="hideShowPsw2()" src="/static/image/visible.png" type="button" alt="">
+                        </div>
+                    <!-- <input class="form-control" name="email" type="text" placeholder="选填您的邮箱(选填)">
+                    <input  class="form-control" name="phone" type="text" placeholder="选填您的电话(选填)"> -->
+                    <button type="submit">创建</button>
+                    <button type="button" class="shiftbtn" id="login">已有账号？<span>返回登录界面</span></button>
+                </form>
+            </div>
+            <div class="login">
+                <h1>登录</h1>
+                <form method="post" action="login" onsubmit="return login_submit()">
+                    <input name="account" id="login_account" onblur="login_blur()" placeholder="输入您的账户" type="text">
+                    <div class="input-row">
+                        <input name="password" id="login_password" onblur="login_blur()" placeholder="输入您的密码" type="password">
+                        <img id="demo_img2" onclick="hideShowPsw2()" src="/static/image/visible.png" type="button">
+                    </div>
+                    <button type="submit">登录</button>
+                    <button type="button" class="shiftbtn" id="register">没有账号？前往注册页面</button>
+                </form>
+            </div>
+        </div>
+        <div class="con-box left">
+            <div class="content-box page1" id="swipe_content-box">
+                <h2>欢迎来到SJTUer</h2>
+                <h3>网站主要提供以下功能</h3>
+                <h4>交大人常用网站导航</h4>
+                <p>看看有哪些有用的网站吧</p>
+                <h4>校内事物分享</h4>
+                <p>和大家分享你在交大的所见所闻</p>
+                <p>点击按钮，继续了解更多</p>
+                <div class="box_btn_container">
+                    <div class="box_btn right f1t2" id="box_btn_right">
+                        <span>开始</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-box page2 hidden_right" id="swipe_content-box">
+                <h2>第二页</h2>
+                <P>此网站仅用于课程小组学习</P>
+                <p>请不要填入自己的真实信息</p>
+                <div class="box_btn_container">
+                    <div class="box_btn left f2t1" id="box_btn_left">
+                    <span>返回</span>
+                    </div>
+                    <div class="box_btn right f2t3" id="box_btn_right">
+                        <span>继续</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-box page3 hidden_right" id="swipe_content-box">
+                <h2>第三页</h2>
+                <P>此网站仅用于课程小组学习</P>
+                <p>请不要填入自己的真实信息</p>
+                <div class="box_btn_container">
+                    <div class="box_btn left f3t2" id="box_btn_left">
+                        <span>返回</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="con-box right">
+            <h2>声明</h2>
+            <P>此网站仅用于课程小组学习！</P>
+        </div>
+    </div>
+    <script>
+        let login_shift = document.getElementById('login')
+        let register_shift = document.getElementById('register')
+        let form_box = document.getElementsByClassName('form-box')[0]
+        let login = document.getElementsByClassName('login')[0]
+        let register = document.getElementsByClassName('register')[0]
+
+        register_shift.addEventListener('click', ()=>{
+            form_box.style.transform='translateX(80%)';
+            login.classList.add('hidden')
+            register.classList.remove('hidden')
+        })
+
+        login_shift.addEventListener('click', ()=>{
+            form_box.style.transform='translateX(0)';
+            login.classList.remove('hidden')
+            register.classList.add('hidden')
+        })
+    </script>
+    <script>
+        let f1t2 = document.getElementsByClassName("f1t2")[0]
+        let f2t1 = document.getElementsByClassName("f2t1")[0]
+        let f2t3 = document.getElementsByClassName("f2t3")[0]
+        let f3t2 = document.getElementsByClassName("f3t2")[0]
+        page1 = document.getElementsByClassName("page1")[0]
+        page2 = document.getElementsByClassName("page2")[0]
+        page3 = document.getElementsByClassName("page3")[0]
+        f1t2.addEventListener('click', ()=>{
+            page1.classList.add('hidden_left');
+            page2.classList.remove('hidden_right');
+        })
+        f2t1.addEventListener('click', ()=>{
+            page1.classList.remove('hidden_left');
+            page2.classList.add('hidden_right');
+        })
+        f2t3.addEventListener('click', ()=>{
+            page2.classList.add('hidden_left');
+            page3.classList.remove('hidden_right');
+        })
+        f3t2.addEventListener('click', ()=>{
+            page2.classList.remove('hidden_left');
+            page3.classList.add('hidden_right');
+        })
+    </script>
+    <script type="text/javascript">
+        let demoImg2 = document.getElementById("demo_img2");
+        let demoInput2 = document.getElementById("demo_input2");
+
+        function hideShowPsw2() {
+            if (demoInput2.type === "password") {
+                demoInput2.type = "text";
+                demoImg2.src = "/static/image/invisible.png";
+            } else {
+                demoInput2.type = "password";
+                demoImg2.src = "/static/image/visible.png";
+            }
+        }
+    </script>
+    <script>
+         let input_account=document.getElementById("login_account");
+         let input_password=document.getElementById("login_password");
+         function login_submit(){
+             let account=document.getElementById("login_account").value;
+             let password=document.getElementById("login_password").value;
+             if(account===""){
+                 input_account.classList.add("err");
+                 input_account.setAttribute("placeholder", "账户名不能为空");
+                 alert('账号不能为空')
+                 return false;
+             }
+             if(password===""){
+                 input_password.classList.add("err");
+                 input_password.setAttribute("placeholder", "密码不能为空");
+                 alert('密码不能为空')
+                 return false;
+             }
+
+         }
+         function login_blur(){
+             let account=document.getElementById("login_account").value;
+             let password=document.getElementById("login_password").value;
+             if(account!==""){
+                 input_account.classList.remove("err");
+             }
+             if(password!==""){
+                 input_password.classList.remove("err");
+             }
+         }
+    </script>
+    <script>
+        let register_account=document.getElementById("account")
+        let register_password1=document.getElementById("password1")
+        let register_password2=document.getElementById("password2")
+        function register_submit() {
+            let account=document.getElementById("account").value;
+            let password1=document.getElementById("password1").value;
+            let password2=document.getElementById("password2").value;
+            if(account===""){
+                register_account.classList.add("err");
+                register_account.setAttribute("placeholder", "账户名不能为空");
+                alert('账号不能为空')
+                return false;
+
+            }
+            if(password1===""){
+                register_password1.classList.add("err");
+                register_password1.setAttribute("placeholder", "密码不能为空");
+                alert('密码不能为空')
+                return false;
+            }
+            if(password2===""){
+                register_password2.classList.add("err");
+                register_password2.setAttribute("placeholder", "密码不能为空");
+                alert('密码不能为空')
+                return false;
+            }
+            if(password1!==password2){
+                register_password2.classList.add("err");
+                register_password2.value='';
+                register_password2.setAttribute("placeholder", "两次密码不一致");
+                alert('密码不一致')
+                return false;
+            }
+        }
+        function register_blur(){
+
+            let account=document.getElementById("account").value;
+            let password1=document.getElementById("password1").value;
+            let password2=document.getElementById("password2").value;
+
+            if(account!==""){
+                register_account.classList.remove("err");
+            }
+            if(password1!==""){
+                register_password1.classList.remove("err");
+            }
+            if(password2!==""){
+                register_password2.classList.remove("err");
+            }
+        }
+    </script>
+</body>
+</html>

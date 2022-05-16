@@ -7,6 +7,7 @@ from django.db.models import *
 import random
 from .models import praising,comment
 
+
 def article_view(request):
     result = Note.objects.aggregate(total=Count('id'))
     article_id_list = random.sample(range(1, result['total']), 3)

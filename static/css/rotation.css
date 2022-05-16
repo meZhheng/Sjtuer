@@ -1,0 +1,103 @@
+.hidden_left{
+    transform: translateX(-50%) rotateY(90deg);
+}
+.hidden_right{
+    transform: translateX(50%) rotateY(90deg);
+}
+.content-box{
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+}
+.box_btn_container{
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+.box_btn{
+    border-radius: 20px;
+    position: relative;
+    margin: 0 10px;
+    background: #e5ba7b;
+    color: #FFFFFF;
+    width: 40px;
+    height: 40px;
+    transition: 0.5s;
+    box-shadow: 0 10px 15px #e5ba7b44;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+.box_btn::before{
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-top: 3px solid #FFFFFF;
+    border-right: 3px solid #FFFFFF;
+    transition: 0.5s;
+}
+.box_btn.right::before{
+    transform: rotate(45deg);
+    right: 15px;
+}
+.box_btn.left::before{
+    transform: rotate(-135deg);
+    left: 15px;
+}
+.box_btn::after{
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-top: 3px solid #FFFFFF;
+    border-right: 3px solid #FFFFFF;
+    transform: rotate(45deg) translate(-20px, 20px);
+    transition: 0.5s;
+}
+.box_btn.right::after{
+    transform: rotate(45deg);
+    left: -20px;
+}
+.box_btn.left::after{
+    transform: rotate(-135deg);
+    right: -20px;
+}
+.box_btn:hover{
+    width: 120px;
+    transition-delay: 0.2s;
+}
+.box_btn.right:hover::before{
+    transform: rotate(45deg) translate(20px, -20px);
+}
+.box_btn.left:hover::before{
+    transform: rotate(-135deg) translate(20px, -20px);
+}
+.box_btn.right:hover::after{
+    transform: rotate(45deg) translate(20px, -20px);
+    transition-delay: 0.5s;
+}
+.box_btn.left:hover::after{
+    transform: rotate(-135deg) translate(20px, -20px);
+    transition-delay: 0.5s;
+}
+.box_btn span{
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+.box_btn:hover span{
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0.75s;
+}
+

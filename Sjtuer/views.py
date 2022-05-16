@@ -14,25 +14,23 @@ POST_FORM = '''
 '''
 
 
+def user_view(request):
+    return render(request, 'user/user.html')
+
+
 def register_view(request):
     if request.method == 'GET':
         return render(request, 'user/register.html')
     elif request.method == 'POST':
         account = request.POST['account']
-        password1 = request.POST['password_1']
-        password2 = request.POST['password_2']
-        email = request.POST['email']
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        phone = request.POST['phone']
-        if password1 != password2:
-            return HttpResponse('---两次密码输入不一致')
+        password = request.POST['password']
+        # email = request.POST['email']
+        # phone = request.POST['phone']
         old_user = UserInfo.objects.filter(username=account)
         if old_user:
             return HttpResponse('---用户名已被占用---')
         try:
-            user = UserInfo.objects.create_user(username=account, password=password1, email=email,
-                                                first_name=first_name, last_name=last_name, phone=phone)
+            user = UserInfo.objects.create_user(username=account, password=password)
         except Exception as err:
             print('--create user error %s' % err)
             return HttpResponse('--用户名已被占用---')
@@ -48,7 +46,7 @@ def login_view(request):
         password = request.POST['password']
         user = authenticate(username=account, password=password)
         if not user:
-            return HttpResponseRedirect('login')
+            return render(request, 'user/user.html', {'login_fail': True})
         else:
             login(request, user)
             return HttpResponseRedirect('index')

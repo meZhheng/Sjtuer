@@ -48,4 +48,5 @@ urlpatterns = [
     path('article/', include('article.urls')),
     path('register', views.register_view),
     path('space', views.userspace_view),
+    path('user', views.user_view),
 ]
